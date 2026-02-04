@@ -164,7 +164,7 @@ function startTamagotchi() {
 //Functie die ervoor zorgt dat de tamagochi begint na invullen van de naam
 function naamIngevuld() {
     // Zorgt dat om de seconde de verlaag waarde functie wordt uitgevoerd
-    start = setInterval(startTamaotchi, 1000);
+    start = setInterval(startTamagotchi, 1000);
 }
 
 //Functie voor eten: eetgeluiden en waarde verhogen

@@ -208,28 +208,34 @@ h2 {
       .progressbar{
         padding-left: 5%;
       }
+body {
+  margin: 0;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
 
-      .achtergrond{
-        background-image: url('/inleidingProgrammeren/fotos/achtergrond1.png');
-    }
+.achtergrond {
+  background-image: url("../fotos/achtergrond1.png");
+}
 
-    .achtergrond2{
-        background-image: url('/inleidingProgrammeren/fotos/achtergrond2.png');
-    }
+.achtergrond2 {
+  background-image: url("../fotos/achtergrond2.png");
+}
 
-    .achtergrond3
-    {
-        background-image: url('/inleidingProgrammeren/fotos/achtergrond4.png');
-    }
+.achtergrond3 {
+  background-image: url("../fotos/achtergrond4.png");
+}
 
-    .achtergrond4{
-        background-image: url('/inleidingProgrammeren/fotos/picainlove.png') ;
-    }
+.achtergrond4 {
+  background-image: url("../fotos/picainlove.png");
+}
 
-    .achtergrond5{
-        background-image: url('/inleidingProgrammeren/fotos/achtergrond3.gif');
-    }
+.achtergrond5 {
+  background-image: url("../fotos/achtergrond3.gif");
+}
 
-    .achtergrond6{
-        background-image: url('/inleidingProgrammeren/fotos/achtergrond5.png');
-    }
+.achtergrond6 {
+  background-image: url("../fotos/achtergrond5.png");
+}
+

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eindopdracht programmeren</title>
+    <link href="./css/style.css" rel="stylesheet">
+</head>
+
+<body class="achtergrond">
+
+    <main>
+        <section>
+
+            <!--form voor invoer naam vd pokemon-->
+            <form>
+                <label>Hoe heet de pokemon?</label>
+                <input type="text" class="naaminput">
+                <button type="submit" id="naamButton" class="naambutton">Start</button>
+            </form>
+            <h1>naam Pokemon</h1>
+        </section>
+
+        <!--box voor pokeball en pica afbeeldingen-->
+        <section class="pokeball">
+            <article class="pokeballimg">
+            <img src="./fotos/pokeball.png" alt="pokeball">
+            </article>
+            <article id="picafotodiv">
+                <img src="./fotos/pica.png" id="picafoto" alt="picafoto">
+            </article>>
+        </section>
+
+   
+            <!--buttons-->
+            <section class="pokeballknoppen">
+                <button id="voedselButton">Voedsel</button>
+                <button id="trainButton">Trainen</button>
+                <button id="aaiButton">Aaien</button>
+            </section>
+
+            <!--levens-->
+            <section class="progressbar">
+                <article id="hongerdiv">
+                    <img src="./fotos/hongericon.png" id="hongericon" alt="Honger">
+                    <progress id="hongerWaarde" max="100" value="50"></progress>
+                </article>
+                <article id="traindiv">
+                    <img src="./fotos/PixelBarbell.png" id="trainicon" alt="train">
+                    <progress id="trainWaarde" max="100" value="50"></progress>
+                </article>
+                <article id="aaidiv">
+                    <img src="./fotos/PixelHart.webp" id="aaiicon" alt="aai">
+                    <progress id="aaiWaarde" max="100" value="50"></progress>
+                </article>
+            </section>
+
+            <!--restart button en h2 voor pokemon dood-->
+            <section>
+            <h2></h2>
+            </section>
+
+            <!--Bij klikken link wordt je doorverwezen naar dezelfde pagina aka de pagina wordt ververst-->
+            <section class="verberg" id="restartButtonDiv">
+                <button id="restartButton" onclick="window.location.href=window.location.href">Restart</button>
+            </section>
+
+
+    </main>
+    <!--audio voor pokemon-->
+    <audio id="voedselAudio">
+        <source src="audio/eet.wav" type="audio/wav"> 
+    </audio>
+    <audio id="trainAudio">
+        <source src="audio/karate.wav" type="audio/wav">
+    </audio>
+    <audio id="aaiAudio">
+        <source src="audio/pikaaaa.mp3" type="audio/wav">
+    </audio>
+    <audio id="doodAudio">
+        <source src="audio/dood.mp3" type="audio/wav">
+    </audio>
+    <script src="./script/script.js"></script>
+</body>
+
+</html>

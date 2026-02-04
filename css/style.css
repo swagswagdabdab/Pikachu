@@ -1,0 +1,235 @@
+body{
+    background-image: url("../fotos/achtergrond1.png");
+    margin: 0;
+    background-size: cover;
+}
+
+@font-face {
+    font-family: vcr;
+    src: url(../fonts/VCR_OSD_MONO.ttf);
+    font-style: normal;
+  }
+
+form {
+    font-size: 2em;
+    text-align: center;
+    margin-top: 1.5em;
+    margin-bottom: 2em;
+}
+
+.naambutton,
+.naaminput {
+    background-color: #b6faf9;
+    font-family: vcr;
+    text-decoration-color: black;
+    border-width : 1px;
+    border-color: whitesmoke;
+    padding: 1em;
+    border-radius: 10px;
+}
+
+label {
+    color: black;
+    font-family: vcr;
+    font-size: 1em;
+}
+
+h1 {
+    color: black;
+    font-family: vcr;
+    font-size: 2em;
+    position: absolute;
+    left: 56%;
+    top: 22%;
+    transform: translate(-50%, -50%);
+}
+
+.pokeball {
+    width: 50%;
+}
+
+.pokeballimg {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+}
+
+#picafotodiv {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#picafoto {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: -450px;
+    margin-left: -50px;
+}
+
+.pokeballknoppen{
+    display: flex;
+    margin-top: -9.9em;
+    padding-left: 15%;
+}
+
+#voedselButton, #trainButton, #aaiButton {
+    font-family: vcr;
+    text-decoration-color: black;
+    font-size: 1.5em;
+    text-decoration: none;
+    
+    border: black;
+    border-radius: 5%;
+    cursor:pointer;
+    padding: 1%;
+    background-color: whitesmoke;
+}
+
+#voedselButton:hover, #trainButton:hover, #aaiButton:hover {
+    color: black;
+}
+
+#trainButton {
+    margin-left: 1em;
+    margin-right: 1.3em;
+}
+
+.pokeballknoppen {
+    display: flex;
+align-items: center;
+justify-content: center;
+margin-top: -9.9em;
+}
+
+#hongerdiv {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: -17em;
+    margin-left: 10em;
+}
+
+#traindiv {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 2em;
+    margin-left: 10em;
+}
+
+#aaidiv {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 2em;
+    margin-left: 10em;
+}
+
+#hongericon, #trainicon, #aaiicon {
+    height: 2em;
+    padding-right: 1%;
+}
+
+#hongerWaarde, #trainWaarde, #aaiWaarde {
+    color: red;
+    height: 2em;
+}
+
+h2 {
+    padding-top: 0;
+    font-family: vcr;
+    color: black;
+    font-size: 3em;
+    margin-top: 5em;
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.verberg {
+    display: none !important;
+}
+
+#restartButtonDiv {
+    display: flex;
+   align-items: center;
+   justify-content: center;
+       margin-top: -2em;
+}
+
+#restartButton {
+    font-family: 'vcr', monospace;
+        text-decoration-color: black;
+        font-size: 2em;
+        text-decoration: none;
+        
+        background-color: green;  
+        cursor:pointer;
+        border: black;
+        border-radius: 5%;
+        cursor:pointer;
+        padding: 1%;
+        
+        margin-left: -3.5em;
+    }
+    
+    #restartButton:hover {
+    color: whitesmoke;
+    font-family: vcr;
+    border: black;
+    border-radius: 5%;
+    cursor:pointer;
+    padding: 1%;
+    background-color: whitesmoke;
+    }
+
+
+
+
+    progress[value] {
+        -webkit-appearance: none;
+        appearance: none;
+        width: 30%;
+
+    }
+
+      progress[value]::-webkit-progress-bar {
+        background-color: #eee;
+        border-radius: 100px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25) inset;
+      }
+
+      .progressbar{
+        padding-left: 5%;
+      }
+
+      .achtergrond{
+        background-image: url('/inleidingProgrammeren/fotos/achtergrond1.png');
+    }
+
+    .achtergrond2{
+        background-image: url('/inleidingProgrammeren/fotos/achtergrond2.png');
+    }
+
+    .achtergrond3
+    {
+        background-image: url('/inleidingProgrammeren/fotos/achtergrond4.png');
+    }
+
+    .achtergrond4{
+        background-image: url('/inleidingProgrammeren/fotos/picainlove.png') ;
+    }
+
+    .achtergrond5{
+        background-image: url('/inleidingProgrammeren/fotos/achtergrond3.gif');
+    }
+
+    .achtergrond6{
+        background-image: url('/inleidingProgrammeren/fotos/achtergrond5.png');
+    }

@@ -1,213 +1,209 @@
-var start;
-var hongerWaarde = document.getElementById('hongerWaarde').value;
-var trainWaarde = document.getElementById('trainWaarde').value;
-var aaiWaarde = document.getElementById('aaiWaarde').value;
-var naamButton = document.getElementById('naamButton');
+// =====================
+// Tamagotchi Pokemon JS
+// =====================
 
-var hongerKnop = document.getElementById('voedselButton');
-var trainKnop = document.getElementById('trainButton');
-var aaiKnop = document.getElementById('aaiButton');
+let start = null;
 
-//invoer naam pica
-var naam = 'naam van de Pokemon';
+// Pak de progress elements (niet .value, maar het element zelf)
+const hongerEl = document.getElementById('hongerWaarde');
+const trainEl  = document.getElementById('trainWaarde');
+const aaiEl    = document.getElementById('aaiWaarde');
+
+const naamButton = document.getElementById('naamButton');
+
+const hongerKnop = document.getElementById('voedselButton');
+const trainKnop  = document.getElementById('trainButton');
+const aaiKnop    = document.getElementById('aaiButton');
+
+// Startwaarden als nummers
+let hongerWaarde = Number(hongerEl.value);
+let trainWaarde  = Number(trainEl.value);
+let aaiWaarde    = Number(aaiEl.value);
+
+// Invoer naam pica
+let naam = 'naam van de Pokemon';
 document.querySelector('h1').textContent = naam;
 
-//wijzigd text inhoud h1 en voorkomt defaultgedrag formulier
+// Wijzigt text inhoud h1 en voorkomt default gedrag formulier
 function verwerkFormulier(event) {
-    event.preventDefault();
-    document.querySelector('h1').textContent = document.querySelector('input').value;
+  event.preventDefault();
+  const input = document.querySelector('input').value.trim();
+  if (input.length > 0) {
+    document.querySelector('h1').textContent = input;
+  }
 }
 
-//voegt event listner toe aan form, luisterd naar submit en die voert vervolgens verwerkformulier functie uit
+// Voegt event listener toe aan form
 document.querySelector('form').addEventListener('submit', verwerkFormulier);
 
-//functie voor het bijwerken van de foto in de pokeball
-function picabijwerken(hongerWaarde, trainWaarde, aaiWaarde) {
-
-    //array van alle pica foto's
-    var picapiccaArray = [ 
-        'blijepica.png', 
-        'pica.png', 
-        'buffpica.png', 
-        'depripica.png', 
-        'dikkepica.png', 
-        'dodepica.png', 
-        'bozepica.png',
-        'cutepica.png'
-      ];
-
-    //als trainwaarde gelijk of hoger zijn dan 90
-    if (trainWaarde >= 90) {
-        console.log("gespierde pica");
-        document.getElementById('picafoto').src = "./fotos/" + picapiccaArray[2];
-
-        document.querySelector('body').classList.remove('achtergrond');
-        document.querySelector('body').classList.add('achtergrond2');
-    }
-
-    //als honherwaarde gelijk of hoger zijn dan 90
-    else if (hongerWaarde >= 90) {
-        console.log("dikke pica");
-        document.getElementById('picafoto').src = "./fotos/" + picapiccaArray[4];
-        document.querySelector('body').classList.remove('achtergrond');
-        document.querySelector('body').classList.add('achtergrond3');
-    }
-
-    //als aaiwaarde gelijk of hoger zijn dan 90
-    else if (aaiWaarde >= 90) {
-        console.log("cute pica");
-        document.querySelector('body').classList.remove('achtergrond');
-        document.querySelector('body').classList.add('achtergrond4');
-    }
-
-
-    //als alle waardes gelijk of hoger zijn dan 80
-    else if (hongerWaarde >= 70 && trainWaarde >= 70 && aaiWaarde >= 70) {
-        //vervangt de foto voor een blije picachu
-        console.log("blijepica");
-        document.getElementById('picafoto').src = "./fotos/" + picapiccaArray[0];
-    }
-
-    //als de waardes gelijk aan of hoger zijn dan 50
-    else if (hongerWaarde >= 50 && trainWaarde >= 50 && aaiWaarde >= 50) {
-        //vervangt de foto voor een normale picachu
-        console.log("normale pica");
-        document.getElementById('picafoto').src = "./fotos/" + picapiccaArray[1];
-    }
-
-    //als waardes 50 of lager zijn
-    else if (hongerWaarde <= 50 || trainWaarde <= 50 || aaiWaarde <= 50) {
-        //Als waardes 20 of lager zijn
-        if (hongerWaarde <= 20 || trainWaarde <= 20 || aaiWaarde <= 20) {
-            //Als de waardes 0 zijn aka als pica dood gaat
-            if (hongerWaarde <= 0 || trainWaarde <= 0 || aaiWaarde <= 0) {
-                //vervangt pica voor dodepica.png
-                console.log("pica is dede");
-                document.getElementById('picafoto').src = "./fotos/" + picapiccaArray[5];
-
-                //dood audio wordt uit html gehaald
-                var playdoodaudio = document.getElementById("doodAudio");
-
-                //Speelt de audio af
-                playdoodaudio.play();
-                playdoodaudio.volume = 0.2;
-
-                //Veranderd de achtergrond
-                document.querySelector('body').classList.remove('achtergrond');
-                document.querySelector('body').classList.add('achtergrond5');
-            } else {
-                //veranderd de foto naar een depresieve picachu
-                console.log("depri");
-                document.getElementById('picafoto').src = "./fotos/" + picapiccaArray[3];
-
-                //Veranderd de achtergrond
-                console.log("depri");
-                document.getElementById('picafoto').src = "./fotos/" + picapiccaArray[3];            }
-        }
-        //wanneer de waardes tussen de 20 en 50 zitten
-        else {
-            //veranderd de foto naar een boze picachu
-            console.log("pica is boos");
-            document.getElementById('picafoto').src = "./fotos/" + picapiccaArray[6];
-
-            //Veranderd de achtergrond
-            document.querySelector('body').classList.remove('achtergrond');
-            document.querySelector('body').classList.add('achtergrond6');
-        }
-    }
-
+// Helper: clamp tussen 0 en 100
+function clamp(val) {
+  return Math.max(0, Math.min(100, val));
 }
 
-    // Zorgt voor afnemen progressbar en voor nieuwe waardes
-function lowerValue (hongerWaarde, trainWaarde, aaiWaarde) {
-
-    console.log("lower value")
-    hongerWaarde -= 7; // Verlaagt de hongerWaarde
-    document.getElementById('hongerWaarde').value = hongerWaarde;
-
-    trainWaarde -= 3; // Verlaagt de trainWaarde
-    document.getElementById('trainWaarde').value = trainWaarde;
-
-    aaiWaarde -= 5; // Verlaagt de aaiWaarde
-    document.getElementById('aaiWaarde').value = aaiWaarde;
-
-    //Check of de foto bijgewerkt moet worden
-    picabijwerken(hongerWaarde, trainWaarde, aaiWaarde);
-
-    // Als één van de waardes 0 of kleiner dan 0 is dan stopt de tamagochi
-    if (hongerWaarde <= 0 || trainWaarde <= 0 || aaiWaarde <= 0) {
-        clearInterval(start);
-
-        // zet de buttons "uit"
-        document.getElementById('voedselButton').disabled = true;
-        document.getElementById('trainButton').disabled = true;
-        document.getElementById('aaiButton').disabled = true;
-
-        //Nieuwe text voor in de h2 die angeeft dat pokemon is overleden
-        document.querySelector('h2').textContent = 'oh shit,' + document.querySelector('h1').textContent + 'is dede :(';
-
-        //Haal de restart button tevoorschijn
-        document.getElementById('restartButtonDiv').classList.remove('verberg');
-    }
+// Helper: update UI progress bars
+function updateProgressbars() {
+  hongerEl.value = hongerWaarde;
+  trainEl.value = trainWaarde;
+  aaiEl.value = aaiWaarde;
 }
 
-//Geeft nieuwe waardes aan de progressbar
+// Functie voor het bijwerken van de foto in de pokeball
+function picabijwerken() {
+  const picapiccaArray = [
+    'blijepica.png',
+    'pica.png',
+    'buffpica.png',
+    'depripica.png',
+    'dikkepica.png',
+    'dodepica.png',
+    'bozepica.png',
+    'cutepica.png'
+  ];
+
+  const body = document.querySelector('body');
+  const picaFoto = document.getElementById('picafoto');
+
+  // Background reset (handig zodat je niet vast blijft hangen op een achtergrond)
+  body.classList.remove('achtergrond', 'achtergrond2', 'achtergrond3', 'achtergrond4', 'achtergrond5', 'achtergrond6');
+  body.classList.add('achtergrond');
+
+  // Dood eerst checken
+  if (hongerWaarde <= 0 || trainWaarde <= 0 || aaiWaarde <= 0) {
+    picaFoto.src = "./fotos/" + picapiccaArray[5];
+
+    const playdoodaudio = document.getElementById("doodAudio");
+    if (playdoodaudio) {
+      playdoodaudio.volume = 0.2;
+      playdoodaudio.play();
+    }
+
+    body.classList.remove('achtergrond');
+    body.classList.add('achtergrond5');
+    return;
+  }
+
+  // Heel blij (allemaal hoog)
+  if (hongerWaarde >= 70 && trainWaarde >= 70 && aaiWaarde >= 70) {
+    picaFoto.src = "./fotos/" + picapiccaArray[0];
+    return;
+  }
+
+  // Specifieke “extremen”
+  if (trainWaarde >= 90) {
+    picaFoto.src = "./fotos/" + picapiccaArray[2];
+    body.classList.remove('achtergrond');
+    body.classList.add('achtergrond2');
+    return;
+  }
+
+  if (hongerWaarde >= 90) {
+    picaFoto.src = "./fotos/" + picapiccaArray[4];
+    body.classList.remove('achtergrond');
+    body.classList.add('achtergrond3');
+    return;
+  }
+
+  if (aaiWaarde >= 90) {
+    picaFoto.src = "./fotos/" + picapiccaArray[7];
+    body.classList.remove('achtergrond');
+    body.classList.add('achtergrond4');
+    return;
+  }
+
+  // Laag/boos/depri
+  if (hongerWaarde <= 20 || trainWaarde <= 20 || aaiWaarde <= 20) {
+    picaFoto.src = "./fotos/" + picapiccaArray[3]; // depri
+    return;
+  }
+
+  if (hongerWaarde <= 50 || trainWaarde <= 50 || aaiWaarde <= 50) {
+    picaFoto.src = "./fotos/" + picapiccaArray[6]; // boos
+    body.classList.remove('achtergrond');
+    body.classList.add('achtergrond6');
+    return;
+  }
+
+  // Default normaal
+  picaFoto.src = "./fotos/" + picapiccaArray[1];
+}
+
+// Zorgt voor afnemen progressbar en voor nieuwe waardes
+function lowerValue() {
+  hongerWaarde = clamp(hongerWaarde - 7);
+  trainWaarde = clamp(trainWaarde - 3);
+  aaiWaarde = clamp(aaiWaarde - 5);
+
+  updateProgressbars();
+  picabijwerken();
+
+  // Als dood: stop interval + disable knoppen + tekst + restart zichtbaar
+  if (hongerWaarde <= 0 || trainWaarde <= 0 || aaiWaarde <= 0) {
+    clearInterval(start);
+    start = null;
+
+    hongerKnop.disabled = true;
+    trainKnop.disabled = true;
+    aaiKnop.disabled = true;
+
+    document.querySelector('h2').textContent =
+      'oh shit, ' + document.querySelector('h1').textContent + ' is dede :(';
+
+    document.getElementById('restartButtonDiv').classList.remove('verberg');
+  }
+}
+
+// Start tick
 function startTamagotchi() {
-    //Vind de waarde die toegeschreven zijn
-    hongerWaarde = document.getElementById('hongerWaarde').value;
-    trainWaarde = document.getElementById('trainWaarde').value;
-    aaiWaarde = document.getElementById('aaiWaarde').value;
-    lowerValue (hongerWaarde, trainWaarde, aaiWaarde);
-    console.log("test");
+  lowerValue();
 }
 
-//Functie die ervoor zorgt dat de tamagochi begint na invullen van de naam
-function naamIngevuld() {
-    // Zorgt dat om de seconde de verlaag waarde functie wordt uitgevoerd
-    start = setInterval(startTamagotchi, 1000);
+// Functie die ervoor zorgt dat de tamagochi begint na invullen van de naam
+function naamIngevuld(event) {
+  // voorkomt dat de button (submit) rare side effects geeft bij sommige browsers
+  if (event) event.preventDefault();
+
+  // niet meerdere intervals starten
+  if (start !== null) return;
+
+  // start direct en daarna elke seconde
+  startTamagotchi();
+  start = setInterval(startTamagotchi, 1000);
 }
 
-//Functie voor eten: eetgeluiden en waarde verhogen
+// Functie voor eten
 function chappen() {
+  hongerWaarde = clamp(hongerWaarde + 10);
+  updateProgressbars();
+  picabijwerken();
 
-    console.log("nom nom nom")
-    //waardes worden verhoogd met +5 bij de progress balk
-    hongerWaarde += 10;
-    document.getElementById('hongerWaarde').value = hongerWaarde;
-
-    //haal audio uit html
-    var voedselPlay = document.getElementById("voedselAudio");
-
-    //Speel de voedsel audio af
-    voedselPlay.play();
+  const voedselPlay = document.getElementById("voedselAudio");
+  if (voedselPlay) voedselPlay.play();
 }
 
 function trainen() {
-    //Voegd +5 aan de trainbalk toe
-    trainWaarde += 15;
-    document.getElementById('trainWaarde').value = trainWaarde;
+  trainWaarde = clamp(trainWaarde + 15);
+  updateProgressbars();
+  picabijwerken();
 
-    //haal audio uit html
-    var trainPlay = document.getElementById("trainAudio");
-
-    //Speel de miauw af
-    trainPlay.play();
+  const trainPlay = document.getElementById("trainAudio");
+  if (trainPlay) trainPlay.play();
 }
 
 function aaien() {
-    //waardes worden verhoogd met +5 bij de progress balk
-    aaiWaarde += 10;
-    document.getElementById('aaiWaarde').value = aaiWaarde;
+  aaiWaarde = clamp(aaiWaarde + 10);
+  updateProgressbars();
+  picabijwerken();
 
-    //haal audio uit html
-    var playAai = document.getElementById("aaiAudio");
-
-    //Speel de miauw af
-    playAai.play();
+  const playAai = document.getElementById("aaiAudio");
+  if (playAai) playAai.play();
 }
 
-//Eventlisteners om de knoppen te linken aan de progressbalk
+// Eventlisteners
 hongerKnop.addEventListener('click', chappen);
 trainKnop.addEventListener('click', trainen);
 aaiKnop.addEventListener('click', aaien);
+
+// Let op: jouw start button zit in een form en is type="submit".
+// Daarom preventDefault in naamIngevuld, zodat start altijd werkt zonder reload/submit gedoe.
 naamButton.addEventListener('click', naamIngevuld);

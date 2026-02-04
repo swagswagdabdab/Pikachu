@@ -208,6 +208,7 @@ h2 {
       .progressbar{
         padding-left: 5%;
       }
+
 body {
   margin: 0;
   background-size: cover;
@@ -238,4 +239,3 @@ body {
 .achtergrond6 {
   background-image: url("../fotos/achtergrond5.png");
 }
-
